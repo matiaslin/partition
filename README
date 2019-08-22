@@ -1,0 +1,10 @@
+Program: partition.sh
+Author: Matias Lin <matiasenoclin@gmail.com>
+Date: 08/12/2019
+********************************************************************************
+
+Program Description:
+--------------------
+This program allows the user to partition a directory full of files into two
+folders: train and validation. The user will be able to customize the percentage
+of images in each folder.
