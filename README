@@ -1,6 +1,6 @@
 Program: partition.sh
 Author: Matias Lin <matiasenoclin@gmail.com>
-Date: 08/12/2019
+Date: 08/22/2019
 ********************************************************************************
 
 Program Description:
@@ -8,3 +8,16 @@ Program Description:
 This program allows the user to partition a directory full of files into two
 folders: train and validation. The user will be able to customize the percentage
 of images in each folder.
+
+Usage:
+------
+1) To execute the program cd into the directory with the 'partition.sh' file and
+enter either of the following commands:
+
+  '$ ./get_data.sh' or '$ bash get_data.sh'
+
+2) TODO
+
+Future Work:
+------------
+Partition dataset anywhere by just providing the PATH to it.
