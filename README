@@ -37,4 +37,3 @@ folders: train and validation.
 Future Work:
 ------------
 Suggest partition... (percentage and testing).
-Fix validation format restriction.
