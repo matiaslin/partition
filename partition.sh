@@ -12,8 +12,10 @@ echo "=========================================================="
 redo=1
 while [ $redo -eq 1 ]
 do
-  # User customizable directories
+  # User customizable directories TODO
+
   # User specify the PATH
+  echo
   echo -ne "PATH to the dataset ($HOME/path/to/dataset): "
   read -r path
   if [ -d "${path}" ]; then
@@ -30,7 +32,6 @@ do
     echo
     echo -ne "Percentage of train data points: "
     read -r percentage 
-    redo=0
     echo
 
     # User input preprocess
@@ -47,6 +48,24 @@ do
       percentage=$(($percentage * 100)) # Float
     fi
   fi
+
+  # Displaying summary
+  echo "Summary:"
+  echo "  - PATH: $path"
+  echo "  - TRAIN PERCENTAGE: $percentage%"
+  echo "  - VALIDATION PERCENTAGE: $((100 - percentage))%"
+  echo
+  wrong=1
+  while [ $wrong -eq 1 ]; do
+    echo -ne "Is this correct? (y/n): " 
+    read answer
+    if [ "$answer" == "y" ]; then #TODO
+      wrong=0
+    elif [ "$answer" == "n" ]; then
+      redo=1
+      wrong=0
+    fi
+  done
 done
 
 # Calculating percentages
