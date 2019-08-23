@@ -59,7 +59,7 @@ do
   while [ $wrong -eq 1 ]; do
     echo -ne "Is this correct? (y/n): " 
     read answer
-    if [ "$answer" == "y" ]; then #TODO
+    if [ "$answer" == "y" ]; then
       wrong=0
     elif [ "$answer" == "n" ]; then
       redo=1
@@ -76,7 +76,7 @@ validation=$((total-train))
 mkdir $path/train
 mkdir $path/validation
 
-# Move all into a file
+# Move data into train/
 echo Moving data points to train folder.
 i=0
 FILES=$path/*
@@ -89,8 +89,9 @@ do
   fi
 done
 
+# Move data into validation/
 echo Moving data points to validation folder.
-mv $path/*.jpg $path/validation/
+mv $path/*.* $path/validation/
 
 echo
 echo Done!
