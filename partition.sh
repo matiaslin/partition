@@ -1,28 +1,51 @@
 #!/bin/bash
-total=$(ls | wc -l)
 
+# Welcome message
+echo
+echo "=========================================================="
+echo "- Welcome to partition!                                  -"
+echo "- This program will help you get your dataset ready for  -"
+echo "- any machine learning task                              -"
+echo "=========================================================="
+
+# Prompting user
 redo=1
 while [ $redo -eq 1 ]
 do
-  # User customizable percentage
-  echo
-  echo -ne Percentage of train data points: 
-  read -r percentage 
-  redo=0
-  echo
+  # User customizable directories
+  # User specify the PATH
+  echo -ne "PATH to the dataset ($HOME/path/to/dataset): "
+  read -r path
+  if [ -d "${path}" ]; then
+    echo -ne "PATH is valid." 
+    total=$(cd $path && ls | wc -l)
+    echo "You've got a total of $total data points"
+    redo=0
+  else
+    echo "PATH is not valid."
+  fi
 
-  # User input preprocess
-  if [ -z $percentage ]; then # Empty
-    echo Nothing inputed. Try again.
-    redo=1
-  elif [[ -n ${percentage//[0-9]/} ]]; then
-    echo Not an integer.
-    redo=1
-  elif [ "$percentage" -gt 100 ]; then # Wrong
-    echo Think about it...
-    redo=1
-  elif [ $percentage -lt 1 ]; then
-    percentage=$(($percentage * 100)) # Float
+  if [ $redo -eq 0 ]; then
+    # User customizable percentage
+    echo
+    echo -ne "Percentage of train data points: "
+    read -r percentage 
+    redo=0
+    echo
+
+    # User input preprocess
+    if [ -z $percentage ]; then # Empty
+      echo Nothing inputed. Try again.
+      redo=1
+    elif [[ -n ${percentage//[0-9]/} ]]; then
+      echo Not an integer.
+      redo=1
+    elif [ "$percentage" -gt 100 ]; then # Wrong
+      echo Think about it...
+      redo=1
+    elif [ $percentage -lt 1 ]; then
+      percentage=$(($percentage * 100)) # Float
+    fi
   fi
 done
 
@@ -31,31 +54,31 @@ train=$(($total*$percentage/100))
 validation=$((total-train))
 
 # Partitioning
-mkdir train
-mkdir validation
+mkdir $path/train
+mkdir $path/validation
 
 # Move all into a file
-echo Moving to train.
+echo Moving data points to train folder.
 i=0
-FILES=./*
+FILES=$path/*
 for file in $FILES
 do
   if [ $i -lt $train ]; then
-    echo $file
-    mv $file train/
+    #echo $file
+    mv $file $path/train/
     i=$((i+1))
   fi
 done
 
-echo Moving to Validation.
-mv *.jpg validation/
+echo Moving data points to validation folder.
+mv $path/*.jpg $path/validation/
 
 echo
 echo Done!
 echo -------------------------------------
 echo Total: $total
-echo "  ||------- Train: $train"
-echo "  ||------- Validation: $validation"
+echo "  ||---$percentage%--- Train: $train"
+echo "  ||---$((100 - percentage))%--- Validation: $validation"
 echo
 
 echo Done!
