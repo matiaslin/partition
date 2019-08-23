@@ -9,6 +9,10 @@ This program allows the user to partition a directory full of files into two
 folders: train and validation. The user will be able to customize the percentage
 of images in each folder.
 
+Installation:
+-------------
+TODO
+
 Usage:
 ------
 1) To execute the program cd into the directory with the 'partition.sh' file and
@@ -20,4 +24,5 @@ enter either of the following commands:
 
 Future Work:
 ------------
-Partition dataset anywhere by just providing the PATH to it.
+Suggest partition... (percentage and testing).
+Fix validation format restriction.
