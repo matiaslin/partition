@@ -22,18 +22,19 @@ enter either of the following commands:
 
   '$ ./get_data.sh' or '$ bash get_data.sh'
 
-2) The program will then ask the user to input some information.
+2) The user will be asked to enter '1' or '2' depending whether they want to 
+partition the dataset into 'train and validation' or 'train, validation and
+testing', respectively.
+
+3) The program will then ask the user to input some information.
   a) The PATH of the dataset. Note: When specifying absolute PATHS, the char '~'
   is not valid.
   b) The percentage of the training data.
+  c) (If the user inputed '2') The percentage of the validation data.
 
-3) The program will now ask for confirmation before intializing the partition.
+4) The program will now ask for confirmation before intializing the partition.
 After reviewing the information, if the user decides to continue then "y" should
 be typed, otherwise, enter "n".
 
-4) Once the program is finished, your dataset is going to be partitioned into 2
-folders: train and validation.
-
-Future Work:
-------------
-Suggest partition... (percentage and testing). [Work in Progress 8/26/2019]
+5) Once the program is finished, your dataset is going to be partitioned into 2
+or 3 folders: train and validation (and testing, if the user inputed '2').
