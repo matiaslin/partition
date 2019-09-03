@@ -29,10 +29,10 @@ partition the dataset into 'train and validation' or 'train, validation and
 testing', respectively.
 
 3) The program will then ask the user to input some information.
-  a) The PATH of the dataset. Note: When specifying absolute PATHS, the char '~'
+  * The PATH of the dataset. Note: When specifying absolute PATHS, the char '~'
   is not valid.
-  b) The percentage of the training data.
-  c) (If the user inputed '2') The percentage of the validation data.
+  * The percentage of the training data.
+  * (If the user inputed '2') The percentage of the validation data.
 
 4) The program will now ask for confirmation before intializing the partition.
 After reviewing the information, if the user decides to continue then "y" should
