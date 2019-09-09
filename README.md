@@ -1,6 +1,6 @@
 Program: partition.sh
 
-Author: Matias Lin <matiasenoclin@gmail.com>
+Author: Matias Lin <<matiasenoclin@gmail.com>>
 
 Date: 08/22/2019
 ********************************************************************************
